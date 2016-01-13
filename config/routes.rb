@@ -1,6 +1,38 @@
 Rails.application.routes.draw do
   
 
+  get 'static_pages/aboutus'
+
+  get 'static_pages/mission'
+
+  get 'static_pages/company_history'
+
+  get 'static_pages/company_structure'
+
+  get 'static_pages/cf_bio'
+
+  get 'static_pages/rf_bio'
+
+  get 'static_pages/hhsyc_divisions'
+
+  get 'static_pages/startchaper'
+
+  get 'static_pages/joinhhsyc'
+
+  get 'static_pages/ccd'
+
+  get 'static_pages/red'
+
+  get 'static_pages/projects'
+
+  get 'static_pages/ebobc'
+
+  get 'static_pages/juneteenth'
+
+  get 'static_pages/mdg'
+
+  get 'static_pages/eteam'
+
   devise_for :admins
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
