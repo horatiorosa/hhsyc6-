@@ -1,44 +1,42 @@
 Rails.application.routes.draw do
   
-
-  get 'static_pages/aboutus'
-
-  get 'static_pages/mission'
-
-  get 'static_pages/company_history'
-
-  get 'static_pages/company_structure'
-
-  get 'static_pages/cf_bio'
-
-  get 'static_pages/rf_bio'
-
-  get 'static_pages/hhsyc_divisions'
-
-  get 'static_pages/startchaper'
-
-  get 'static_pages/joinhhsyc'
-
-  get 'static_pages/ccd'
-
-  get 'static_pages/red'
-
-  get 'static_pages/projects'
-
-  get 'static_pages/ebobc'
-
-  get 'static_pages/juneteenth'
-
-  get 'static_pages/mdg'
-
-  get 'static_pages/eteam'
-
   devise_for :admins
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  resources :announcements
+  resources :blogs
+  
+
+  get 'adminfisher', to: 'admins#index'
+
+  get 'aboutus', to: 'static_pages#aboutus'
+  get 'mission', to: 'static_pages#mission'
+  get 'company_history', to: 'static_pages#company_history'
+  get 'company_structure', to: 'static_pages#company_structure'
+  get 'cf_bio', to: 'static_pages#cf_bio'
+  get 'rf_bio', to: 'static_pages#rf_bio'
+  get 'hysyc_divisions', to: 'static_pages#hhsyc_divisions'
+  get 'startchapter', to: 'static_pages#startchapter'
+  get 'joinhhsyc', to: 'static_pages#joinhhsyc'
+  get 'ccd', to: 'static_pages#ccd'
+  get 'red', to: 'static_pages#red'
+  
+  get 'projects', to: 'static_pages#projects'
+  get 'ebobc', to: 'static_pages#ebobc'
+  get 'juneteenth', to: 'static_pages#juneteenth'
+  get 'mdg', to: 'static_pages#mdg'
+  get 'eteam', to: 'static_pages#eteam'
+
+  get 'announcement/show/:id', to: 'announcements#publicshow', as: 'announcements/show'
+  get 'publicannindex', to: 'announcements#publicannindex', as: 'announcementlist'
+  # get 'index/announcements/:id', to: 'announcements#publicannindex'
+  get 'blog/show/:id', to: 'blogs#blogpubshow', as: 'blogs/show'
+  get 'publicblogindex', to: 'blogs#publicblogindex', as: 'bloglist'
+  
+  
+  get 'welcome', to: 'welcome#index'
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
