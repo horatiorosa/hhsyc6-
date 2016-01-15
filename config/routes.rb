@@ -1,9 +1,42 @@
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  
+  devise_for :admins
+  resources :announcements
+  resources :blogs
+  
+
+  get 'adminfisher', to: 'admins#index'
+
+  get 'aboutus', to: 'static_pages#aboutus'
+  get 'mission', to: 'static_pages#mission'
+  get 'company_history', to: 'static_pages#company_history'
+  get 'company_structure', to: 'static_pages#company_structure'
+  get 'cf_bio', to: 'static_pages#cf_bio'
+  get 'rf_bio', to: 'static_pages#rf_bio'
+  get 'hysyc_divisions', to: 'static_pages#hhsyc_divisions'
+  get 'startchapter', to: 'static_pages#startchapter'
+  get 'joinhhsyc', to: 'static_pages#joinhhsyc'
+  get 'ccd', to: 'static_pages#ccd'
+  get 'red', to: 'static_pages#red'
+  
+  get 'projects', to: 'static_pages#projects'
+  get 'ebobc', to: 'static_pages#ebobc'
+  get 'juneteenth', to: 'static_pages#juneteenth'
+  get 'mdg', to: 'static_pages#mdg'
+  get 'eteam', to: 'static_pages#eteam'
+
+  get 'announcement/show/:id', to: 'announcements#publicshow', as: 'announcements/show'
+  get 'publicannindex', to: 'announcements#publicannindex', as: 'announcementlist'
+  # get 'index/announcements/:id', to: 'announcements#publicannindex'
+  get 'blog/show/:id', to: 'blogs#blogpubshow', as: 'blogs/show'
+  get 'publicblogindex', to: 'blogs#publicblogindex', as: 'bloglist'
+  
+  
+  get 'welcome', to: 'welcome#index'
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'welcome#index'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
