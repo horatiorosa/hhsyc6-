@@ -1,0 +1,49 @@
+s<!-- Page Content -->
+    <div class="container">
+        <p id="notice"><%= notice %></p>
+        <% if admin_signed_in? %>
+        <!-- Page Heading/Breadcrumbs -->
+        <%= render 'shared/admin_whitebar' %>
+        <% else %>
+        <%= render 'shared/public_whitebar' %>
+        <% end %>
+        <!-- /.row -->
+
+        <!-- Content Row -->
+        <div class="row">
+            <!-- Sidebar Column -->
+            <% if admin_signed_in? %>
+                <%= render 'shared/sidebar_admin' %>
+                <% else %>
+                <%= render 'shared/sidebar_public' %>
+            <% end %>
+            <!-- Content Column -->
+            <div class="col-md-9">
+                <div class="stylestatic">
+                    <div class="post_wrapper">
+                        <div>
+                           <%= image_tag(@blog.image_url(:medium).to_s, :class => "blog_img")  %>    
+                        </div>
+                        <h3 >
+                            <%= @blog.blog_title %>
+                        </h3>
+                            <p >
+                            Submitted <%= time_ago_in_words(@blog.created_at) %> ago.
+                            | &nbsp; <%= link_to 'Back', blogs_path %>&nbsp;
+                            <% if admin_signed_in? %>
+                        |   &nbsp; <%= link_to 'Edit', edit_blog_path(@blog) %>&nbsp;
+                        |    &nbsp; <%= link_to 'Delete', blog_path(@blog),method: :delete, data: { confirm: 'Are you sure?'} %>
+                            <% end %>
+                            </p>
+                            <p >
+                                <%= simple_format(@blog.blog_body) %>
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr class="featurette-divider">
+    </div>
+
