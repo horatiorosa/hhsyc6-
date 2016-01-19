@@ -82,3 +82,4 @@ class BlogsController < ApplicationController
       params.require(:blog).permit(:title, :body, :image).merge(admin: current_admin)
     end
 end
+
