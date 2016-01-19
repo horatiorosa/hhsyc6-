@@ -1,4 +1,4 @@
-s<!-- Page Content -->
+<!-- Page Content -->
     <div class="container">
         <p id="notice"><%= notice %></p>
         <% if admin_signed_in? %>
@@ -20,23 +20,26 @@ s<!-- Page Content -->
             <!-- Content Column -->
             <div class="col-md-9">
                 <div class="stylestatic">
-                    <div class="post_wrapper">
-                        <div>
-                           <%= image_tag(@blog.image_url(:medium).to_s, :class => "blog_img")  %>    
+                    <div>
+                        <div class="img_background" >
+                           <%= image_tag( @announcement.image_url(:medium).to_s, :class => "announcement_img") %>    
                         </div>
                         <h3 >
-                            <%= @blog.title %>
+                            <%= @announcement.title %>
                         </h3>
                             <p >
-                            Submitted <%= time_ago_in_words(@blog.created_at) %> ago.
-                            | &nbsp; <%= link_to 'Back', blogs_path %>&nbsp;
+                            Submitted <%= time_ago_in_words(@announcement.created_at) %> ago.
                             <% if admin_signed_in? %>
-                        |   &nbsp; <%= link_to 'Edit', edit_blog_path(@blog) %>&nbsp;
-                        |    &nbsp; <%= link_to 'Delete', blog_path(@blog),method: :delete, data: { confirm: 'Are you sure?'} %>
+                            | &nbsp; <%= link_to 'Back', announcements_path %>&nbsp;
+                            
+                        |   &nbsp; <%= link_to 'Edit', edit_announcement_path(@announcement) %>&nbsp;
+                        |    &nbsp; <%= link_to 'Delete', announcement_path(@announcement),method: :delete, data: { confirm: 'Are you sure?'} %>
+                        <% else %>
+                        | &nbsp; <%= link_to 'Back', :back %>&nbsp;
                             <% end %>
                             </p>
                             <p >
-                                <%= simple_format(@blog.body) %>
+                                <%= simple_format(@announcement.body) %>
                             </p>
                     </div>
                 </div>
@@ -45,5 +48,4 @@ s<!-- Page Content -->
         <!-- /.row -->
 
         <hr class="featurette-divider">
-    </div>
-
+   

@@ -31,7 +31,7 @@
                     <tbody>
                       <% @blogs.each do |blog| %>
                         <tr class="blg_tbl">
-                          <td class="blg_tbl_title"><%= link_to blog.blog_title, blog %></td>
+                          <td class="blg_tbl_title"><%= link_to blog.title, blog %></td>
                           <td class="blg_tbl_date"><%= blog.created_at.strftime("%b %d, %Y - %I:%M %p") %></td>
                           <td class="blg_tbl_view"><%= link_to 'View', blog %></td>
                           <% if admin_signed_in? %>
