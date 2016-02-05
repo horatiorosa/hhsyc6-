@@ -2,3 +2,15 @@
 <p>Find me in app/views/galleries/new.html.erb</p>
 
 <h1>New Gallery</h1>
+
+<%= form_for (@gallery) do |f| %>
+  <p>
+    <%= f.label :event %>
+    <%= f.text_field :event %>
+  </p>
+
+  <p>
+    <%= f.submit "Create" %>      
+  </p>
+  
+<% end %>

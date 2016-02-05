@@ -1,2 +1,24 @@
 <h1>Galleries#show</h1>
 <p>Find me in app/views/galleries/show.html.erb</p>
+
+<%= @gallery.event %>
+
+<%= form_for(@picture) do |f| %>
+  <% if @picture.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@picture.errors.count, "error") %> prevented this picture from being saved:</h2>
+
+      <ul>
+      <% @picture.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.file_field :image, placeholder: "Upload a photo here" %>
+  <%= f.hidden_field :image_cache %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
