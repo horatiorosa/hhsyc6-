@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
-  
+
+
   devise_for :admins
   resources :announcements
   resources :blogs
+
+  resources :pictures
+  resources :galleries, except: [:delete]
+  delete '/galleries/:id', to: 'galleries#destroy', as: 'delete', method: :delete
   
 
   get 'adminfisher', to: 'admins#index'
